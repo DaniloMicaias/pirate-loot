@@ -49,3 +49,6 @@ func _set_animation():
 		$AnimatedSprite.play("run")
 	else:
 		$AnimatedSprite.play("jump")
+		
+	if velocity.y > 0 and !is_grounded:
+		$AnimatedSprite.play("fall")
