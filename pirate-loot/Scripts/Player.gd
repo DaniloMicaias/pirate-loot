@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 var velocity = Vector2.ZERO
+var direcao = Vector2(0,0)
 var move_speed = 480
 var gravity = 1200
 var jump_force = -720
@@ -11,7 +12,7 @@ onready var raycasts = $raycasts
 func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
 	
-	_get_imput() 
+	_get_input() 
 	
 	velocity = move_and_slide(velocity)
 	
@@ -20,11 +21,11 @@ func _physics_process(delta: float) -> void:
 	_set_animation()
 
 #funcao para andar e controlar a direcao
-func _get_imput():
+func _get_input():
 	velocity.x = 0
 	var move_direction = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	velocity.x = lerp(velocity.x, move_speed * move_direction, 0.2)
-	
+	direcao.x = Input.get_axis("move_left", "move_right")
 	if move_direction !=0:
 		$AnimatedSprite.scale.x = move_direction
 
@@ -42,12 +43,9 @@ func _check_is_ground():
 
 #Funcao para controlar as animacoes
 func _set_animation():
-	var anim = "idle"
-	
-	if !is_grounded:
-		anim="jump"
-	elif velocity.x != 0:
-		anim = "run"
-	
-	if $AnimatedSprite.animation != anim:
-		$AnimatedSprite.play()
+	if direcao.x == 0:
+		$AnimatedSprite.play("idle")
+	elif direcao.x != 0 :
+		$AnimatedSprite.play("run")
+	else:
+		$AnimatedSprite.play("jump")
