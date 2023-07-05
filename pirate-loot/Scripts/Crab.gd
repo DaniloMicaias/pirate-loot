@@ -30,18 +30,21 @@ func _on_AnimatedSprite_animation_finished():
 
 #Funcao para controlar as animacoes
 func _set_animation():
-	var anim = "run"
-	
 	if$ray_wall.is_colliding():
 		$AnimatedSprite.play("idle")
 	elif motion.x != 0 :
 		$AnimatedSprite.play("run")
 	
-	if hitted:
+	if hitted == true:
 		$AnimatedSprite.play("hit")
 
 
 func _on_hitbox_body_entered(body):
 	hitted = true
+	health -=1
+	body.motion.y -= 300
 	yield(get_tree().create_timer(0.2), "timeout")
 	hitted = false
+	if health < 1:
+		queue_free()
+		get_node("hitbox/collision").set_deferred("disable", true)

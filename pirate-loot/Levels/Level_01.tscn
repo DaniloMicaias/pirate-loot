@@ -1171,7 +1171,7 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="Crab" parent="." instance=ExtResource( 15 )]
-position = Vector2( 501, 18 )
+position = Vector2( 576, 116 )
 
 [node name="fall-zone" type="Area2D" parent="."]
 position = Vector2( 1376, 286 )

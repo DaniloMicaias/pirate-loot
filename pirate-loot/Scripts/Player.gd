@@ -1,20 +1,24 @@
 extends KinematicBody2D
 
-var velocity = Vector2.ZERO
+var motion = Vector2.ZERO
 var direcao = Vector2(0,0)
 var move_speed = 480
 var gravity = 1200
 var jump_force = -720
 var is_grounded
 onready var raycasts = $raycasts
+var health = 3
+var hurted = false
+var knockback_dir = 1
+var knockback_int = 500
 
 #Funcao principal para movimentacao
 func _physics_process(delta: float) -> void:
-	velocity.y += gravity * delta
+	motion.y += gravity * delta
 	
 	_get_input() 
 	
-	velocity = move_and_slide(velocity)
+	motion = move_and_slide(motion)
 	
 	is_grounded = _check_is_ground()
 	
@@ -22,17 +26,19 @@ func _physics_process(delta: float) -> void:
 
 #funcao para andar e controlar a direcao
 func _get_input():
-	velocity.x = 0
+	motion.x = 0
 	var move_direction = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
-	velocity.x = lerp(velocity.x, move_speed * move_direction, 0.2)
+	motion.x = lerp(motion.x, move_speed * move_direction, 0.2)
 	direcao.x = Input.get_axis("move_left", "move_right")
+	
 	if move_direction !=0:
 		$AnimatedSprite.scale.x = move_direction
+		knockback_dir = move_direction
 
 #funcao para pular  
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump") && is_grounded:
-		velocity.y = jump_force / 2
+		motion.y = jump_force / 2
 
 #funcao para verificar se o player esta no chao (Evitar o pulo eterno)
 func _check_is_ground():
@@ -49,6 +55,25 @@ func _set_animation():
 		$AnimatedSprite.play("run")
 	else:
 		$AnimatedSprite.play("jump")
+	
+	if hurted:
+		$AnimatedSprite.play("hit")
 		
-	if velocity.y > 0 and !is_grounded:
+	if motion.y > 0 and !is_grounded:
 		$AnimatedSprite.play("fall")
+
+func knockback():
+	motion.x = -knockback_dir*knockback_int
+	motion = move_and_slide(motion)
+
+func _on_hurtbox_body_entered(body):
+	health -= 1
+	hurted = true
+	knockback()
+	get_node("hurtbox/collision").set_deferred("disabled", true)
+	yield(get_tree().create_timer(0.5), "timeout")
+	get_node("hurtbox/collision").set_deferred("disabled", false)
+	hurted = false
+	if health < 1:
+		queue_free()
+		get_tree().reload_current_scene()
