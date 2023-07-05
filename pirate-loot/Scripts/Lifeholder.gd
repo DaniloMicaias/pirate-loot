@@ -14,14 +14,11 @@ func on_change_life(player_health):
 		print("Foi de arrasta pra cima")
 	else:	
 		if player_health == 2:
-			print(player_health)
-			$life3.hide();
+			$redlife.hide();
 		elif player_health == 1:
-			print(player_health)
-			$life2.hide();
+			$redlife2.hide();
 		elif player_health == 0:
-			print(player_health)
-			$life1.hide();
+			$redlife1.hide();
 
 #$live.rect_size.x = player_health * life_size
 

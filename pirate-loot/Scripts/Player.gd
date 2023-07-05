@@ -18,7 +18,11 @@ var knockback_int = 500
 signal change_life(player_health)
 
 func _ready() -> void:	
+#conecao com a barra de vida
 	connect("change_life", get_parent().get_node("HUD/HBoxContainer/holder"), "on_change_life")
+#coneccao com pocao
+	connect("change_life", get_parent().get_node("red-potion"), "on_change_life")
+	
 	emit_signal("change_life", max_health)
 	
 
