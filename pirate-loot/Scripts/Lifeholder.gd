@@ -10,15 +10,28 @@ var life_size = 32
 
 # Called when the node enters the scene tree for the first time.
 func on_change_life(player_health):
+	#$redlife.show();
+	#$redlife2.show();
+	#$redlife3.show();
 	if player_health == 0:
 		print("Foi de arrasta pra cima")
 	else:	
-		if player_health == 2:
+		if player_health == 3:
+			$redlife.show();
+			$redlife2.show();
+			$redlife3.show();
+		elif player_health == 2:
 			$redlife.hide();
+			$redlife2.show();
+			$redlife3.show();
 		elif player_health == 1:
+			$redlife.hide();
 			$redlife2.hide();
+			$redlife3.show();
 		elif player_health == 0:
-			$redlife1.hide();
+			$redlife.hide();
+			$redlife2.hide();
+			$redlife3.hide();
 
 #$live.rect_size.x = player_health * life_size
 

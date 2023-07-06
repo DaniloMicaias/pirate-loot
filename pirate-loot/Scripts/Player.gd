@@ -20,10 +20,11 @@ signal change_life(player_health)
 func _ready() -> void:	
 #conecao com a barra de vida
 	connect("change_life", get_parent().get_node("HUD/HBoxContainer/holder"), "on_change_life")
-#coneccao com pocao
-	connect("change_life", get_parent().get_node("red-potion"), "on_change_life")
 	
+	Global.player_health = max_health
+	print("Less = %d" %Global.player_health)
 	emit_signal("change_life", max_health)
+	
 	
 
 #Funcao principal para movimentacao
@@ -82,6 +83,8 @@ func knockback():
 
 func _on_hurtbox_body_entered(body):
 	player_health -= 1
+	Global.player_health -= 1
+	print("Less = %d" %Global.player_health)
 	hurted = true
 	emit_signal("change_life", player_health)
 	knockback()
