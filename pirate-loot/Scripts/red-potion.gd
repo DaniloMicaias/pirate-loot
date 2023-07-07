@@ -11,7 +11,10 @@ func _ready():
 	
 	
 func _on_items_body_entered(body):	
-	Global.player_health += 1
+	
+	if(Global.player_health < 3):
+		Global.player_health += 1
+		
 	player_health = Global.player_health
 	emit_signal("change_life", player_health)
 	print("More = %d" %Global.player_health)
