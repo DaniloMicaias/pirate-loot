@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Palm Tree Island/Sprites/Background/Water Reflect Big 04.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Assets/Palm Tree Island/Sprites/Background/Small Cloud 3.png" type="Texture" id=11]
 [ext_resource path="res://Assets/Palm Tree Island/Sprites/Objects/Spikes/Spikes.png" type="Texture" id=12]
 [ext_resource path="res://Levels/Menu.gd" type="Script" id=13]
+[ext_resource path="res://Images/sword-menu.png" type="Texture" id=14]
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -1177,13 +1178,13 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 59.0
+margin_left = 48.0
 margin_top = 7.0
-margin_right = 264.0
+margin_right = 275.0
 margin_bottom = 69.0
 custom_colors/default_color = Color( 0.74902, 0.576471, 0.0509804, 1 )
 custom_fonts/normal_font = SubResource( 51 )
-text = "Pira  e Loot"
+text = "Pira  e   Loot"
 
 [node name="Controls" type="VBoxContainer" parent="."]
 margin_left = 131.0
@@ -1228,6 +1229,12 @@ custom_styles/focus = SubResource( 55 )
 custom_styles/disabled = SubResource( 56 )
 custom_styles/normal = SubResource( 57 )
 text = "Quit"
+
+[node name="Sword-menu" type="Sprite" parent="."]
+position = Vector2( 130, 30 )
+rotation = -2.37199
+scale = Vector2( 0.143331, 0.143331 )
+texture = ExtResource( 14 )
 
 [connection signal="pressed" from="Controls/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Controls/controls" to="." method="_on_controls_pressed"]
