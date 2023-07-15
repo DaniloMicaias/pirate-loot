@@ -3,8 +3,7 @@ extends CanvasLayer
 func change_scene(path, delay = 0.5):
 	$transition.interpolate_property($overlay, "progress", 1.0, 0.0, 2.0, Tween.TRANS_QUINT, Tween.EASE_IN_OUT)
 	$transition.start()
-	yield($transition, "tween_completed")
-	assert(get_tree().change_scene(path) == OK)
+	
 	
 
 	
