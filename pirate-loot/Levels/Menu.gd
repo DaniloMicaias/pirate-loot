@@ -2,6 +2,7 @@ extends Control
 
 func _ready():
 	$Controls/start.grab_focus()
+	MusicController.play_music()
 
 func _on_start_pressed():
 	get_tree().change_scene("res://Levels/Level_03.tscn")
