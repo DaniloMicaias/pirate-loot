@@ -4,7 +4,7 @@ func _ready():
 	$Controls/start.grab_focus()
 
 func _on_start_pressed():
-	get_tree().change_scene("res://Levels/Level_03.tscn")
+	get_tree().change_scene("res://Levels/Level_01.tscn")
 
 
 func _on_controls_pressed():

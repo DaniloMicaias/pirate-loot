@@ -10,5 +10,4 @@ func _ready():
 
 func _on_goal_body_entered(body):
 	if body.name == "Player":
-		changer.change_scene(path)
-		$goal.play("collected")
+		$goal.play("unlocked")
