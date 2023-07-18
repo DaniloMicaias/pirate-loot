@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Background parts/sky dark.jpg" type="Texture" id=2]
 [ext_resource path="res://Assets/Palm Tree Island/Sprites/Objects/Spikes/Spikes.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Palm Tree Island/Sprites/Terrain/Terrain (32x32).png" type="Texture" id=4]
-[ext_resource path="res://Scenes/Shark.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Star.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/items/red-potion.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Background parts/parallax-mountain-mountains.png" type="Texture" id=8]
