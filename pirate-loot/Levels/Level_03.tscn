@@ -23,7 +23,7 @@
 [ext_resource path="res://Assets/Merchant Ship/Sprites/Chest/Unlocked/8.png" type="Texture" id=21]
 [ext_resource path="res://Assets/Merchant Ship/Sprites/Chest/Unlocked/3.png" type="Texture" id=22]
 [ext_resource path="res://Assets/Merchant Ship/Sprites/Chest/Unlocked/7.png" type="Texture" id=23]
-[ext_resource path="res://Assets/Background parts/parede.PNG" type="Texture" id=24]
+[ext_resource path="res://Assets/Background parts/parede dark.png" type="Texture" id=25]
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -1169,14 +1169,14 @@ texture = ExtResource( 11 )
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/wall"]
 position = Vector2( 1688, 11 )
 scale = Vector2( 0.537752, 0.546053 )
-texture = ExtResource( 24 )
+texture = ExtResource( 25 )
 
 [node name="wall2" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/wall2"]
 position = Vector2( 3096, 99 )
 scale = Vector2( 0.537752, 0.546053 )
-texture = ExtResource( 24 )
+texture = ExtResource( 25 )
 
 [node name="star" parent="." instance=ExtResource( 5 )]
 position = Vector2( 500, 66 )
