@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+
 export var speed = 64
 export var health = 1
 var motion = Vector2.ZERO
@@ -23,7 +24,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_AnimatedSprite_animation_finished():
 	if $AnimatedSprite.animation == "idle":
-		$AnimatedSprite.flip_h != $AnimatedSprite.flip_h
 		$ray_wall.scale.x *= -1
 		move_direction *= -1
 		$AnimatedSprite.play("run")
@@ -41,8 +41,8 @@ func _set_animation():
 
 func _on_hitbox_body_entered(body):
 	hitted = true
-	health -=1
-	body.motion.y -= 300
+	health -= 1
+	body.motion.y -= body.jump_force / 2
 	yield(get_tree().create_timer(0.2), "timeout")
 	hitted = false
 	if health < 1:
