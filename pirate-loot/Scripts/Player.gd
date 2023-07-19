@@ -30,8 +30,9 @@ func _ready() -> void:
 #Funcao principal para movimentacao
 func _physics_process(delta: float) -> void:
 	motion.y += gravity * delta
-	
-	_get_input() 
+	motion.x = 0
+	if !hurted:
+		_get_input() 
 	
 	motion = move_and_slide(motion)
 	
@@ -84,7 +85,6 @@ func knockback():
 func _on_hurtbox_body_entered(body):
 	player_health -= 1
 	Global.player_health -= 1
-	print("Less = %d" %Global.player_health)
 	hurted = true
 	emit_signal("change_life", player_health)
 	knockback()
